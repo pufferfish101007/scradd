@@ -243,11 +243,13 @@ defineEvent("threadCreate", async (thread, newlyCreated) => {
 	if (thread.guild.id !== config.guild.id || !newlyCreated) return;
 
 	const { roles } = getThreadConfig(thread);
+	
 	if (roles.length)
 		await thread.send({
 			content: roles.map(roleMention).join(""),
 			allowedMentions: { parse: ["roles"] },
 		});
+	await thread.members.add("728585189256855565"); // add pufferfish101007 to every thread
 });
 
 defineEvent("threadUpdate", async ({ archived: wasArchived }, thread) => {
